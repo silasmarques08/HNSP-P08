@@ -1,0 +1,12 @@
+<div class="card my-5">
+  <div class="card-body">
+    <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+      <div class="form-group">
+        <label for="type">Type name</label>
+        <input type="text" [(ngModel)]="type.name" class="form-control" id="type" name="type"
+               placeholder="Enter the name of the type" required #name="ngModel">
+      </div>
+      <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-dark">Submit</button>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="card my-5">
+    <div class="card-body">
+        <table class="table table-bordered table-striped text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">First name</th>
+                    <th scope="col">Last name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of users">
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.firstName }}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.email }}</td>
+<!--                    <td>{{ user.type.name }}</td>-->
+                    <td>
+                      <a [routerLink]="['../updateuser', user.id]"><button type="button" class="btn btn-warning">Edit</button></a>
+                      <button type="button" class="btn btn-danger" (click)="onDelete(user.id)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

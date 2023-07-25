@@ -1,0 +1,45 @@
+version: '3'
+services:
+  nginx:
+    container_name: nginx
+    image: 'nginx:1.13'
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - './nginx/conf.d:/etc/nginx/conf.d'
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    restart: always
+    ports:
+      - '4200:80'
+    depends_on:
+      - nginx
+  mysql:
+    container_name: mysql
+    image: 'mysql/mysql-server:5.7'
+    environment:
+      MYSQL_ROOT_PASSWORD: abc123
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: finaldb
+      MYSQL_USER: userDB
+      MYSQL_PASSWORD: userDB
+    ports:
+      - '3306:3306'
+    restart: always
+  project-8:
+    container_name: project-8
+    restart: always
+    build:
+      context: /project-8
+      dockerfile: Dockerfile
+    volumes:
+      - './springboot:/springboot'
+      - '~/.m2:/root/.m2'
+    ports:
+      - '8080:8080'
+    depends_on:
+      - nginx
+      - mysql
+    command: 'mvn clean spring-boot:run -Dspring-boot.run.profiles=docker'

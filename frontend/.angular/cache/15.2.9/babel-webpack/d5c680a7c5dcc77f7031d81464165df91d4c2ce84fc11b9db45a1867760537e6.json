@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Type {}","map":{"version":3,"mappings":"AAAA,OAAM,MAAOA,IAAI","names":["Type"],"sourceRoot":"","sources":["C:\\Users\\User\\Desktop\\Coding\\HN\\FMTN\\Final\\project-8\\frontend\\src\\app\\type.ts"],"sourcesContent":["export class Type {\n   id!: string;\n   name!: string;\n}\n"]},"metadata":{},"sourceType":"module","externalDependencies":[]}
